@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProyectoBlog.Modelos
 {
+
     class Conversacion
     {
+        public int ID { get; set; }
+
+
     }
 }
