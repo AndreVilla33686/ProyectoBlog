@@ -10,9 +10,7 @@ namespace ProyectoBlog.Modelos
 {
     public class Usuario
     {
-        Modelos.Database usuarios = new Modelos.Database();
        
-        DataSet listaUsuarios = new DataSet();
         public string nickname { set; get; }
         public string password { set; get; }
         public string name { set; get; }
@@ -32,15 +30,6 @@ namespace ProyectoBlog.Modelos
             activo = dataReader.GetInt32("IS_ACTIVE");
         }
         public Usuario() { }
-        public void GetAllUsuarios()
-        {
-
-        }
-
-        
-        public void SetUsuario(string nickName, string password, string name, string lastName)
-        {
-            usuarios.SetUsuario(nickName, password, name, lastName);
-        }
+ 
     }
 }

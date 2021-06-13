@@ -240,7 +240,7 @@ namespace ProyectoBlog.Modelos
         {
             string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + name + "' AND CONTRASENA = '" + password + "' ;";
 
-            Usuario activeUser = new Usuario();
+            Usuario activeUser =null;
 
             if (this.OpenConnection() == true)
             {
