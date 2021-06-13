@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace ProyectoBlog.Modelos
         public DataTable allUsuarios;
         public DataRow user;
         DataSet listaUsuarios = new DataSet();
+        public string Nickname { set; get; }
+        public Usuario(MySqlDataReader dataReader)
+        {
+            Nickname = dataReader.GetString("NICKNAME");
+        }
+        public Usuario() { }
         public void GetAllUsuarios()
         {
             allUsuarios = usuarios.TablaContacto(allUsuarios, listaUsuarios);

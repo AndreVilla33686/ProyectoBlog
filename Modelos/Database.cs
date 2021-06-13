@@ -58,6 +58,12 @@ namespace ProyectoBlog.Modelos
             }
         }
 
+        internal void CreateNewUser(Usuario nuevousuario)
+        {
+
+            throw new NotImplementedException();
+        }
+
         //Close connection
         private bool CloseConnection()
         {
