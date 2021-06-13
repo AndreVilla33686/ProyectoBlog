@@ -211,5 +211,58 @@ namespace ProyectoBlog.Modelos
             cmd.ExecuteNonQuery();
         }
 
+        public Usuario GetUsuarioByNameAndPassword(string x, string y)
+        {
+            string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + x + "' AND CONTRASENA = '" + y + "' ;";
+
+            Usuario activeUser = new Usuario();
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                DataTable dt = dataReader.GetSchemaTable();
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    return activeUser;
+                }
+
+                dataReader.Close();
+                this.CloseConnection();
+                return activeUser;
+            }
+            else
+            {
+                return activeUser;
+            }
+        }
+
+        public Usuario GetUsuarioByID(int id)
+        {
+            string query = "SELECT * FROM USUARIOS WHERE ID_USUARIO = '"+id+"';";
+
+            Usuario activeUser = new Usuario();
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                DataTable dt = dataReader.GetSchemaTable();
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    return activeUser;
+                }
+
+                dataReader.Close();
+                this.CloseConnection();
+                return activeUser;
+            }
+            else
+            {
+                return activeUser;
+            }
+        }
     }
 }
