@@ -1,0 +1,14 @@
+C:\Users\andre\source\repos\ProyectoBlog\bin\Debug\ProyectoBlog.exe.config
+C:\Users\andre\source\repos\ProyectoBlog\bin\Debug\ProyectoBlog.exe
+C:\Users\andre\source\repos\ProyectoBlog\bin\Debug\ProyectoBlog.pdb
+C:\Users\andre\source\repos\ProyectoBlog\bin\Debug\MySql.Data.dll
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.csprojAssemblyReference.cache
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.Conversaciones.resources
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.Properties.Resources.resources
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.csproj.GenerateResource.cache
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.csproj.CoreCompileInputs.cache
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.csproj.CopyComplete
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.exe
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.pdb
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.Login.resources
+C:\Users\andre\source\repos\ProyectoBlog\obj\Debug\ProyectoBlog.SignUp.resources

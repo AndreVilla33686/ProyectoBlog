@@ -12,9 +12,21 @@ namespace ProyectoBlog
 {
     public partial class Conversaciones : Form
     {
+        public string usuarioActivo, usuarioActivoNombre, usuarioActivoApellido, usuarioActivoTipo;
+        public int usuarioActivoID;
         public Conversaciones()
         {
             InitializeComponent();
+        }
+
+        private void Conversaciones_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
