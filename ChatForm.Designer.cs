@@ -200,6 +200,7 @@ namespace ProyectoBlog
             this.Controls.Add(this.lvCategorias);
             this.Name = "ChatForm";
             this.Text = "Cetys Chat";
+            this.Load += new System.EventHandler(this.ChatForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

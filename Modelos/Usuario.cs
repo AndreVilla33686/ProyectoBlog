@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoBlog.Modelos
 {
-    class Usuario
+    public class Usuario
     {
         Modelos.Database usuarios = new Modelos.Database();
         public DataTable allUsuarios;

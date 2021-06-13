@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoBlog.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,7 +68,7 @@ namespace ProyectoBlog
             apellido = usuario.GetApellido();
             tipo = usuario.GetTipo();
             MessageBox.Show(tipo);
-            Conversaciones c = new Conversaciones();
+            ChatForm c = new ChatForm(usuario);
             c.Show();
             textBox1.Text = "";
             textBox2.Text = "";

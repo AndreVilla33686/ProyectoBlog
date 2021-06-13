@@ -14,9 +14,11 @@ namespace ProyectoBlog
     public partial class ChatForm : Form
     {
         private List<Categoria> _categorias = new List<Categoria>();
+        private Usuario _loggedUser;
         Database dbConnection;
-        public ChatForm()
+        public ChatForm(Usuario user)
         {
+            _loggedUser = user;
             InitializeComponent();
             dbConnection = new Database();
             LoadCategorias();
@@ -29,9 +31,14 @@ namespace ProyectoBlog
             {
                 lvCategorias.Items.Add(cat.Descripcion, cat.Id);
             });
-
+            lvCategorias.Select();
         }
         private void LoadMensajes()
+        {
+
+        }
+
+        private void ChatForm_Load(object sender, EventArgs e)
         {
 
         }
