@@ -24,7 +24,7 @@ namespace ProyectoBlog
             usuario.GetAllUsuarios();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Login_Load(object sender, EventArgs e)
         {
             usuario.GetAllUsuarios();
         }
@@ -77,8 +77,15 @@ namespace ProyectoBlog
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            usuario.GetAllUsuarios();
-            VerificarUsuario();
+            Database db = new Database();
+            Usuario loggedUser = db.GetUsuarioByNameAndPassword(user, "asdf");
+            if(loggedUser == null){
+                MessageBox.Show("El Usuario no existe o la contrasena es incorrecta.");
+                return;
+            }
+            ChatForm chat = new ChatForm(loggedUser);
+            this.Close();
+            chat.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

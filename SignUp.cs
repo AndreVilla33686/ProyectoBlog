@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoBlog.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,6 +41,11 @@ namespace ProyectoBlog
             }
             else
             {
+                Usuario nuevoUsuario = new Usuario();
+                nuevousuario.Nickname = textBox1.Text;
+                Database db = new Database();
+                db.CreateNewUser(nuevousuario);
+
                 nuevousuario.SetUsuario(textBox1.Text, textBox2.Text, textBox5.Text, textBox6.Text);
             }
             nuevousuario.GetAllUsuarios();
