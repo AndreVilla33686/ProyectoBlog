@@ -61,7 +61,7 @@ namespace ProyectoBlog.Modelos
         internal void CreateNewUser(Usuario nuevousuario)
         {
             connection.Open();
-            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.Nickname + "', '" + nuevousuario.Password + "', '" + nuevousuario.Name + "', '" + nuevousuario.LastName + "', 'usuario', 'null', 'null');";
+            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.Nickname + "', '" + nuevousuario.Password + "', '" + nuevousuario.Name + "', '" + nuevousuario.LastName + "', 'usuario', 'null', '1');";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
             //throw new NotImplementedException();
