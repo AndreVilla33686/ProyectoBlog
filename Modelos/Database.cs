@@ -108,11 +108,34 @@ namespace ProyectoBlog.Modelos
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                DataTable dt = dataReader.GetSchemaTable();
-                foreach (DataRow row in dt.Rows)
+
+                while (dataReader.Read())
                 {
-                 
-                    list.Add(new Mensaje(row));
+                    list.Add(new Mensaje(dataReader));
+                }
+                dataReader.Close();
+                this.CloseConnection();
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+        public List<Categoria> GetCatalogoCategorias()
+        {
+            string query = "SELECT * FROM CAT_CATEGORIA ORDER BY 1";
+
+            List<Categoria> list = new List<Categoria>();
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    list.Add(new Categoria(dataReader));
                 }
 
                 dataReader.Close();
@@ -134,13 +157,10 @@ namespace ProyectoBlog.Modelos
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                DataTable dt = dataReader.GetSchemaTable();
-                foreach (DataRow row in dt.Rows)
+                while (dataReader.Read())
                 {
-
-                    mensaje= new Mensaje(row);
+                    mensaje = new Mensaje(dataReader);
                 }
-
                 dataReader.Close();
                 this.CloseConnection();
             }
