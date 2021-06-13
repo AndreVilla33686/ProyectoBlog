@@ -75,6 +75,7 @@ namespace ProyectoBlog
             this.btnSendMessage.TabIndex = 2;
             this.btnSendMessage.Text = "Enviar";
             this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
             // txtMessage
             // 
@@ -83,6 +84,7 @@ namespace ProyectoBlog
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(304, 26);
             this.txtMessage.TabIndex = 3;
+            this.txtMessage.TextChanged += new System.EventHandler(this.txtMessage_TextChanged);
             // 
             // label1
             // 
