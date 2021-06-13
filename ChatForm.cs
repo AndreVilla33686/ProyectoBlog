@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,9 @@ namespace ProyectoBlog
 {
     public partial class ChatForm : Form
     {
+        [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
+        public static extern int SetWindowTheme(IntPtr hWnd, String pszSubAppName, String pszSubIdList);
+
         private List<Categoria> _categorias = new List<Categoria>();
         private Usuario _loggedUser;
         Database dbConnection;
@@ -20,6 +24,7 @@ namespace ProyectoBlog
         {
             _loggedUser = user;
             InitializeComponent();
+            SetWindowTheme(lvCategorias.Handle, "Explorer", null);
             dbConnection = new Database();
             LoadCategorias();
         }
@@ -31,7 +36,11 @@ namespace ProyectoBlog
             {
                 lvCategorias.Items.Add(cat.Descripcion, cat.Id);
             });
-            lvCategorias.Select();
+            if (lvCategorias.Items.Count > 0)
+            {
+                lvCategorias.Items[0].Selected = true;
+                lvCategorias.Select();
+            }
         }
         private void LoadMensajes()
         {

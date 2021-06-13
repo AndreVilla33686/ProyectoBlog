@@ -48,6 +48,7 @@ namespace ProyectoBlog
             // 
             // lvCategorias
             // 
+            this.lvCategorias.FullRowSelect = true;
             this.lvCategorias.HideSelection = false;
             this.lvCategorias.Location = new System.Drawing.Point(15, 23);
             this.lvCategorias.Name = "lvCategorias";
