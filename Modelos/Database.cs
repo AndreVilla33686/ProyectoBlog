@@ -166,6 +166,22 @@ namespace ProyectoBlog.Modelos
             }
             return mensaje;
         }
+        public DataTable TablaContacto(DataTable allUsuarios, DataSet listaUsuarios)
+        {
+            string query = "SELECT * FROM USUARIOS;";
+            MySqlDataAdapter u = new MySqlDataAdapter(query, connection);
+            u.Fill(listaUsuarios, "USUARIOS");
+            allUsuarios = listaUsuarios.Tables["USUARIOS"];
+            return allUsuarios;
+        }
+
+        public void SetUsuario(string a, string b, string c, string d)
+        {
+            connection.Open();
+            string query = "INSERT INTO USUARIOS VALUES ('" + a + "', '" + b + "', '" + c + "', '" + d + "', 'usuario', 'null', '1');";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+        }
 
     }
 }
