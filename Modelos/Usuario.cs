@@ -11,68 +11,36 @@ namespace ProyectoBlog.Modelos
     public class Usuario
     {
         Modelos.Database usuarios = new Modelos.Database();
-        public DataTable allUsuarios;
-        public DataRow user;
+       
         DataSet listaUsuarios = new DataSet();
-        public string Nickname { set; get; }
+        public string nickname { set; get; }
+        public string password { set; get; }
+        public string name { set; get; }
+        public string lastName { set; get; }
+        public string tipo { set; get; }
+        public int id { set; get; }
+        public int activo { set; get; }
+
         public Usuario(MySqlDataReader dataReader)
         {
-            Nickname = dataReader.GetString("NICKNAME");
+            nickname = dataReader.GetString("NICKNAME");
+            password = dataReader.GetString("CONTRASENA");
+            name = dataReader.GetString("NOMBRE");
+            lastName = dataReader.GetString("APELLIDO");
+            tipo = dataReader.GetString("TIPO");
+            id = dataReader.GetInt32("ID_USUARIO");
+            activo = dataReader.GetInt32("IS_ACTIVE");
         }
         public Usuario() { }
         public void GetAllUsuarios()
         {
-            allUsuarios = usuarios.TablaContacto(allUsuarios, listaUsuarios);
+
         }
 
-        public bool ComprobarUsuario(string x)
+        
+        public void SetUsuario(string nickName, string password, string name, string lastName)
         {
-            foreach (DataRow row in allUsuarios.Rows)
-            {
-                for (int i = 0; i < 1; i++)
-                {
-                    if (Convert.ToString(row[i]) == x)
-                    {
-                        user = row;
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        public bool ComprobarContrasena(string x)
-        {
-            if (Convert.ToString(user[1]) == x)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public string GetUsuario()
-        {
-            return Convert.ToString(user[0]);
-        }
-        public string GetNombre()
-        {
-            return Convert.ToString(user[2]);
-        }
-        public string GetApellido()
-        {
-            return Convert.ToString(user[3]);
-        }
-        public string GetTipo()
-        {
-            return Convert.ToString(user[4]);
-        }
-        public int GetID()
-        {
-            return Convert.ToInt32(user[5]);
-        }
-        public void SetUsuario(string a, string b, string c, string d)
-        {
-            usuarios.SetUsuario(a, b, c, d);
+            usuarios.SetUsuario(nickName, password, name, lastName);
         }
     }
 }

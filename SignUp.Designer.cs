@@ -29,25 +29,25 @@ namespace ProyectoBlog
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.lastNameBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.confirmPasswordBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nicknameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox6
+            // lastNameBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(34, 284);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(239, 22);
-            this.textBox6.TabIndex = 27;
+            this.lastNameBox.Location = new System.Drawing.Point(34, 284);
+            this.lastNameBox.Name = "lastNameBox";
+            this.lastNameBox.Size = new System.Drawing.Size(239, 22);
+            this.lastNameBox.TabIndex = 27;
             // 
             // label6
             // 
@@ -58,20 +58,20 @@ namespace ProyectoBlog
             this.label6.TabIndex = 26;
             this.label6.Text = "Apellido(s)";
             // 
-            // textBox5
+            // nameBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(34, 223);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(239, 22);
-            this.textBox5.TabIndex = 24;
+            this.nameBox.Location = new System.Drawing.Point(34, 223);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(239, 22);
+            this.nameBox.TabIndex = 24;
             // 
-            // textBox3
+            // confirmPasswordBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(34, 161);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(239, 22);
-            this.textBox3.TabIndex = 22;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.confirmPasswordBox.Location = new System.Drawing.Point(34, 161);
+            this.confirmPasswordBox.Name = "confirmPasswordBox";
+            this.confirmPasswordBox.Size = new System.Drawing.Size(239, 22);
+            this.confirmPasswordBox.TabIndex = 22;
+            this.confirmPasswordBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -82,13 +82,13 @@ namespace ProyectoBlog
             this.label5.TabIndex = 21;
             this.label5.Text = "Nombre(s)";
             // 
-            // textBox2
+            // passwordBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(34, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(239, 22);
-            this.textBox2.TabIndex = 20;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.passwordBox.Location = new System.Drawing.Point(34, 98);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(239, 22);
+            this.passwordBox.TabIndex = 20;
+            this.passwordBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -108,13 +108,13 @@ namespace ProyectoBlog
             this.label2.TabIndex = 17;
             this.label2.Text = "Contraseña";
             // 
-            // textBox1
+            // nicknameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(34, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 22);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.nicknameBox.Location = new System.Drawing.Point(34, 39);
+            this.nicknameBox.Name = "nicknameBox";
+            this.nicknameBox.Size = new System.Drawing.Size(239, 22);
+            this.nicknameBox.TabIndex = 16;
+            this.nicknameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -140,15 +140,15 @@ namespace ProyectoBlog
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(332, 408);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.lastNameBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.nameBox);
+            this.Controls.Add(this.confirmPasswordBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nicknameBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "SignUp";
@@ -161,15 +161,15 @@ namespace ProyectoBlog
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox lastNameBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.TextBox confirmPasswordBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nicknameBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
     }

@@ -34,9 +34,9 @@ namespace ProyectoBlog
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.passwordBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nickNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -89,13 +89,13 @@ namespace ProyectoBlog
             this.linkLabel1.Text = "Crear cuenta";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // textBox2
+            // passwordBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(248, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(305, 22);
-            this.textBox2.TabIndex = 12;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.passwordBox.Location = new System.Drawing.Point(248, 120);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(305, 22);
+            this.passwordBox.TabIndex = 12;
+            this.passwordBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -106,13 +106,13 @@ namespace ProyectoBlog
             this.label2.TabIndex = 11;
             this.label2.Text = "Contraseña";
             // 
-            // textBox1
+            // nickNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(248, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 22);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.nickNameBox.Location = new System.Drawing.Point(248, 42);
+            this.nickNameBox.Name = "nickNameBox";
+            this.nickNameBox.Size = new System.Drawing.Size(305, 22);
+            this.nickNameBox.TabIndex = 10;
+            this.nickNameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -133,9 +133,9 @@ namespace ProyectoBlog
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nickNameBox);
             this.Controls.Add(this.label1);
             this.Name = "Login";
             this.Text = "Login";
@@ -152,9 +152,9 @@ namespace ProyectoBlog
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nickNameBox;
         private System.Windows.Forms.Label label1;
     }
 }
