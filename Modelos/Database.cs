@@ -243,11 +243,9 @@ namespace ProyectoBlog.Modelos
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                DataTable dt = dataReader.GetSchemaTable();
-                foreach (DataRow row in dt.Rows)
+                while (dataReader.Read())
                 {
-
-                    return activeUser;
+                    activeUser = new Usuario(dataReader);
                 }
 
                 dataReader.Close();
