@@ -33,11 +33,11 @@ namespace ProyectoBlog
         private void button1_Click_1(object sender, EventArgs e)
         {
             Usuario nuevoUsuario = new Usuario();
-            nuevousuario.nickname = nicknameBox.Text;
-            nuevousuario.password = passwordBox.Text;
-            nuevousuario.name = nameBox.Text;
-            nuevousuario.lastName = lastNameBox.Text;
-            nuevoUsuario.tipo = "usuario";
+            nuevousuario.Nickname = nicknameBox.Text;
+            nuevousuario.Password = passwordBox.Text;
+            nuevousuario.Name = nameBox.Text;
+            nuevousuario.LastName = lastNameBox.Text;
+            nuevoUsuario.Tipo = "usuario";
             Database db = new Database();
             db.CreateNewUser(nuevousuario);
             MessageBox.Show("Usuario creado con éxito");

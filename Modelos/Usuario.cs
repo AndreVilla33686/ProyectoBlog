@@ -11,23 +11,23 @@ namespace ProyectoBlog.Modelos
     public class Usuario
     {
        
-        public string nickname { set; get; }
-        public string password { set; get; }
-        public string name { set; get; }
-        public string lastName { set; get; }
-        public string tipo { set; get; }
-        public int id { set; get; }
-        public int activo { set; get; }
+        public string Nickname { set; get; }
+        public string Password { set; get; }
+        public string Name { set; get; }
+        public string LastName { set; get; }
+        public string Tipo { set; get; }
+        public int Id { set; get; }
+        public int Activo { set; get; }
 
         public Usuario(MySqlDataReader dataReader)
         {
-            nickname = dataReader.GetString("NICKNAME");
-            password = dataReader.GetString("CONTRASENA");
-            name = dataReader.GetString("NOMBRE");
-            lastName = dataReader.GetString("APELLIDO");
-            tipo = dataReader.GetString("TIPO");
-            id = dataReader.GetInt32("ID_USUARIO");
-            activo = dataReader.GetInt32("IS_ACTIVE");
+            Nickname = dataReader.GetString("NICKNAME");
+            Password = dataReader.GetString("CONTRASENA");
+            Name = dataReader.GetString("NOMBRE");
+            LastName = dataReader.GetString("APELLIDO");
+            Tipo = dataReader.GetString("TIPO");
+            Id = dataReader.GetInt32("ID_USUARIO");
+            Activo = dataReader.GetInt32("IS_ACTIVE");
         }
         public Usuario() { }
  

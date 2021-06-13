@@ -61,7 +61,7 @@ namespace ProyectoBlog.Modelos
         internal void CreateNewUser(Usuario nuevousuario)
         {
             connection.Open();
-            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.nickname + "', '" + nuevousuario.password + "', '" + nuevousuario.name + "', '" + nuevousuario.lastName + "', 'usuario', 'null', 'null');";
+            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.Nickname + "', '" + nuevousuario.Password + "', '" + nuevousuario.Name + "', '" + nuevousuario.LastName + "', 'usuario', 'null', 'null');";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
             //throw new NotImplementedException();
@@ -91,7 +91,7 @@ namespace ProyectoBlog.Modelos
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("cat", mensaje.Categoria);
-                //cmd.Parameters.AddWithValue("autor", mensaje.Autor.Id);
+                cmd.Parameters.AddWithValue("autor", mensaje.Autor.Id);
                 cmd.Parameters.AddWithValue("contenido", mensaje.Contenido);
                 cmd.Connection = connection;
                 cmd.ExecuteReader();

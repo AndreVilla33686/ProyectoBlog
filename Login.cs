@@ -50,8 +50,8 @@ namespace ProyectoBlog
                 return;
             }
             ChatForm chat = new ChatForm(loggedUser);
+           this.Hide();
             chat.Show();
-           // this.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

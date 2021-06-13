@@ -64,7 +64,7 @@ namespace ProyectoBlog
                 MessageBox.Show("Por favor ingresa un mensaje.");
                 return;
             }
-            if( lvCategorias.SelectedItems.Count > 0)
+            if( lvCategorias.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor selecciona una categoria.");
                 return;
@@ -72,6 +72,7 @@ namespace ProyectoBlog
             Database db = new Database();
             Mensaje mensaje = new Mensaje();
             mensaje.Autor = _loggedUser;
+            mensaje.Categoria = lvCategorias.SelectedItems[0].ImageIndex.ToString();
             mensaje.Contenido = txtMessage.Text.Trim();
             db.AddNewMessage(mensaje);
         }
