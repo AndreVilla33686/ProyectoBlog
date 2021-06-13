@@ -55,5 +55,35 @@ namespace ProyectoBlog
             }
             return false;
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.PasswordChar = '*';
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox3.PasswordChar = '*';
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Contains(";"))
+            {
+                textBox1.Text = textBox1.Text.Replace(";","");
+            }
+            if (textBox1.Text.Contains("'"))
+            {
+                textBox1.Text = textBox1.Text.Replace("'", "");
+            }
+            if (textBox1.Text.Contains('"'))
+            {
+                textBox1.Text = textBox1.Text.Replace('"', ' ');
+            }
+            if (textBox1.Text.Contains(" "))
+            {
+                textBox1.Text = textBox1.Text.Replace(" ", "");
+            }
+        }
     }
 }

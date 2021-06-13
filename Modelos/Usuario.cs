@@ -59,12 +59,10 @@ namespace ProyectoBlog.Modelos
         {
             return Convert.ToString(user[4]);
         }
-
         public int GetID()
         {
             return Convert.ToInt32(user[5]);
         }
-
         public void SetUsuario(string a, string b, string c, string d)
         {
             usuarios.SetUsuario(a, b, c, d);

@@ -66,12 +66,17 @@ namespace ProyectoBlog
             nombre = usuario.GetNombre();
             apellido = usuario.GetApellido();
             tipo = usuario.GetTipo();
-            MessageBox.Show(tipo);
+            //MessageBox.Show(tipo);
             Conversaciones c = new Conversaciones();
             c.Show();
             textBox1.Text = "";
             textBox2.Text = "";
             this.Visible = false;
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -87,7 +92,7 @@ namespace ProyectoBlog
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            textBox2.PasswordChar = '*';
         }
     }
 }
