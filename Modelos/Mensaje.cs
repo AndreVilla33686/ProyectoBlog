@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace ProyectoBlog.Modelos
 {
-    class Mensaje
+    public class Mensaje
     {
         public int Id { get; set; }
         public string Contenido { get; set; }
         public string Fecha { get; set; }
         public string Categoria { get; set; }
-        // TODO: Cambiar Autor a tipo Usuario 
-        public int Autor { get; set; }
+        public Usuario Autor { get; set; }
 
         public Mensaje()
         {
