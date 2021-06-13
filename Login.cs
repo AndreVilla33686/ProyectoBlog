@@ -14,19 +14,13 @@ namespace ProyectoBlog
     public partial class Login : Form
     {
         Modelos.Usuario usuario = new Modelos.Usuario();
-        bool nickname = false;
-        bool password = false;
-        public int id;
-        public string user, nombre, apellido, tipo;
         public Login()
         {
             InitializeComponent();
-            usuario.GetAllUsuarios();
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            usuario.GetAllUsuarios();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -42,43 +36,15 @@ namespace ProyectoBlog
 
         void VerificarUsuario()
         {
-            nickname = usuario.ComprobarUsuario(textBox1.Text);
-            if (!nickname)
-            {
-                MessageBox.Show("No existe el Nombre de Usuario");
-            }
-            else
-            {
-                password = usuario.ComprobarContrasena(textBox2.Text);
-                if (!password)
-                {
-                    MessageBox.Show("La contraseña es incorrecta");
-                }
-                else
-                {
-                    InicioSesion();
-                }
-            }
         }
         void InicioSesion()
         {
-            id = usuario.GetID();
-            user = usuario.GetUsuario();
-            nombre = usuario.GetNombre();
-            apellido = usuario.GetApellido();
-            tipo = usuario.GetTipo();
-            MessageBox.Show(tipo);
-            ChatForm c = new ChatForm(usuario);
-            c.Show();
-            textBox1.Text = "";
-            textBox2.Text = "";
-            this.Visible = false;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             Database db = new Database();
-            Usuario loggedUser = db.GetUsuarioByNameAndPassword(user, "asdf");
+            Usuario loggedUser = db.GetUsuarioByNameAndPassword(nickNameBox.Text, passwordBox.Text);
             if(loggedUser == null){
                 MessageBox.Show("El Usuario no existe o la contrasena es incorrecta.");
                 return;

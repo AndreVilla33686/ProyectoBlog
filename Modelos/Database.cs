@@ -60,8 +60,11 @@ namespace ProyectoBlog.Modelos
 
         internal void CreateNewUser(Usuario nuevousuario)
         {
-
-            throw new NotImplementedException();
+            connection.Open();
+            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.nickname + "', '" + nuevousuario.password + "', '" + nuevousuario.name + "', '" + nuevousuario.lastName + "', 'usuario', 'null', 'null');";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.ExecuteNonQuery();
+            //throw new NotImplementedException();
         }
 
         //Close connection
@@ -209,17 +212,17 @@ namespace ProyectoBlog.Modelos
             return allUsuarios;
         }
 
-        public void SetUsuario(string a, string b, string c, string d)
+        public void SetUsuario(string nickName, string password, string name, string lastName)
         {
             connection.Open();
-            string query = "INSERT INTO USUARIOS VALUES ('" + a + "', '" + b + "', '" + c + "', '" + d + "', 'usuario', 'null', '1');";
+            string query = "INSERT INTO USUARIOS VALUES ('" + nickName + "', '" + password + "', '" + name + "', '" + lastName + "', 'usuario', 'null', '1');";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
         }
 
-        public Usuario GetUsuarioByNameAndPassword(string x, string y)
+        public Usuario GetUsuarioByNameAndPassword(string name, string password)
         {
-            string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + x + "' AND CONTRASENA = '" + y + "' ;";
+            string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + name + "' AND CONTRASENA = '" + password + "' ;";
 
             Usuario activeUser = new Usuario();
 
@@ -227,11 +230,9 @@ namespace ProyectoBlog.Modelos
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                DataTable dt = dataReader.GetSchemaTable();
-                foreach (DataRow row in dt.Rows)
+                while (dataReader.Read())
                 {
-
-                    return activeUser;
+                    activeUser = new Usuario(dataReader);
                 }
 
                 dataReader.Close();

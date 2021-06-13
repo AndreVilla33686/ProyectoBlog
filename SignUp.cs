@@ -19,12 +19,10 @@ namespace ProyectoBlog
         public SignUp()
         {
             InitializeComponent();
-            nuevousuario.GetAllUsuarios();
         }
 
         private void SignUp_Load(object sender, EventArgs e)
         {
-            nuevousuario.GetAllUsuarios();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,61 +32,49 @@ namespace ProyectoBlog
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            nuevousuario.GetAllUsuarios();
-            if (VerificarUsuario())
-            {
-                MessageBox.Show("Este nombre de usuario ya existe, favor de seleccionar otro");
-            }
-            else
-            {
-                Usuario nuevoUsuario = new Usuario();
-                nuevousuario.Nickname = textBox1.Text;
-                Database db = new Database();
-                db.CreateNewUser(nuevousuario);
-
-                nuevousuario.SetUsuario(textBox1.Text, textBox2.Text, textBox5.Text, textBox6.Text);
-            }
-            nuevousuario.GetAllUsuarios();
+            Usuario nuevoUsuario = new Usuario();
+            nuevousuario.nickname = nicknameBox.Text;
+            nuevousuario.password = passwordBox.Text;
+            nuevousuario.name = nameBox.Text;
+            nuevousuario.lastName = lastNameBox.Text;
+            nuevoUsuario.tipo = "usuario";
+            Database db = new Database();
+            db.CreateNewUser(nuevousuario);
             MessageBox.Show("Usuario creado con éxito");
         }
 
         bool VerificarUsuario()
         {
-            nickname = nuevousuario.ComprobarUsuario(textBox1.Text);
-            if (nickname)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            textBox2.PasswordChar = '*';
+            passwordBox.PasswordChar = '*';
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            textBox3.PasswordChar = '*';
+            confirmPasswordBox.PasswordChar = '*';
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Contains(";"))
+            if (nicknameBox.Text.Contains(";"))
             {
-                textBox1.Text = textBox1.Text.Replace(";","");
+                nicknameBox.Text = nicknameBox.Text.Replace(";","");
             }
-            if (textBox1.Text.Contains("'"))
+            if (nicknameBox.Text.Contains("'"))
             {
-                textBox1.Text = textBox1.Text.Replace("'", "");
+                nicknameBox.Text = nicknameBox.Text.Replace("'", "");
             }
-            if (textBox1.Text.Contains('"'))
+            if (nicknameBox.Text.Contains('"'))
             {
-                textBox1.Text = textBox1.Text.Replace('"', ' ');
+                nicknameBox.Text = nicknameBox.Text.Replace('"', ' ');
             }
-            if (textBox1.Text.Contains(" "))
+            if (nicknameBox.Text.Contains(" "))
             {
-                textBox1.Text = textBox1.Text.Replace(" ", "");
+                nicknameBox.Text = nicknameBox.Text.Replace(" ", "");
             }
         }
     }
