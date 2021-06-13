@@ -51,5 +51,29 @@ namespace ProyectoBlog
         {
 
         }
+
+        private void txtMessage_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            if(txtMessage.Text.Trim().Length == 0 )
+            {
+                MessageBox.Show("Por favor ingresa un mensaje.");
+                return;
+            }
+            if( lvCategorias.SelectedItems.Count > 0)
+            {
+                MessageBox.Show("Por favor selecciona una categoria.");
+                return;
+            }
+            Database db = new Database();
+            Mensaje mensaje = new Mensaje();
+            mensaje.Autor = _loggedUser;
+            mensaje.Contenido = txtMessage.Text.Trim();
+            db.AddNewMessage(mensaje);
+        }
     }
 }

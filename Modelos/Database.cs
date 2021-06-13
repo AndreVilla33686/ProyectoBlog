@@ -79,6 +79,22 @@ namespace ProyectoBlog.Modelos
             }
         }
 
+        public void AddNewMessage(Mensaje mensaje)
+        {
+            string sql = "INSERT INTO MENSAJES(ID_CATEGORIA, AUTOR, CONTENIDO) VALUES(@cat, @autor, @contenido)";
+
+            if (this.OpenConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("cat", mensaje.Categoria);
+                //cmd.Parameters.AddWithValue("autor", mensaje.Autor.Id);
+                cmd.Parameters.AddWithValue("contenido", mensaje.Contenido);
+                cmd.Connection = connection;
+                cmd.ExecuteReader();
+                this.CloseConnection();
+            }
+        }
 
         public void ExcecuteSql(string query, List<string[]> paramsList)
         {
