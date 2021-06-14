@@ -59,7 +59,8 @@ namespace ProyectoBlog
             {
               chat = new ChatForm((Usuario)loggedUser);
             }
-           this.Hide();
+            this.Hide();
+            chat.Name += nickNameBox.Text;
             chat.Show();
         }
 
