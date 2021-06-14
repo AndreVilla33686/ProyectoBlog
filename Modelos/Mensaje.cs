@@ -29,10 +29,13 @@ namespace ProyectoBlog.Modelos
         {
             Id = dataRow.GetInt32("ID_MENSAJE");
             Contenido = dataRow.GetString("CONTENIDO");
-           // Fecha = dataRow.GetDateTime("FECHA");
+            //Contenido = SplitInParts(Contenido, 3);
+            // Fecha = dataRow.GetDateTime("FECHA");
             Categoria = dataRow.GetString("ID_CATEGORIA");
             Database db = new Database();
              Autor = db.GetUsuarioByID(dataRow.GetInt32("AUTOR"));
         }
+
+        
     }
 }
