@@ -93,7 +93,7 @@ namespace ProyectoBlog
 
             if (lvCategorias.SelectedItems.Count == 0)
             {
-                return;
+             //   return;
             }
             _conversacion = dbConnection.GetConversacionByCategoriaID(lvCategorias.SelectedItems[0].ImageIndex.ToString());
             if(_conversacion ==null) return;
@@ -103,7 +103,8 @@ namespace ProyectoBlog
             if (_conversacion == null) return;
             _conversacion.Mensajes.ForEach((mensaje) =>
             {
-                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido, mensaje.Id);
+                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > \u2665"+mensaje.Reacciones +" " + mensaje.Contenido , mensaje.Id);
+                
                 if(lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
                 {
                     string isAdmin = "";
@@ -153,6 +154,16 @@ namespace ProyectoBlog
         private void lvCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadMensajes();
+        }
+
+        private void lvConversacion_DoubleClick(object sender, EventArgs e)
+        {
+            if(lvConversacion.SelectedItems.Count > 0)
+            {
+                Mensaje msj = dbConnection.GetMensaje(lvConversacion.SelectedItems[0].ImageIndex);
+                msj.AddLike(_loggedUser);
+                LoadMensajes();
+            }
         }
     }
 }

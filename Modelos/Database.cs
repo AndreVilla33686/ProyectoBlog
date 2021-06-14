@@ -130,7 +130,7 @@ namespace ProyectoBlog.Modelos
         public Conversacion GetConversacionByCategoriaID(string id)
         {
             Conversacion conv = null;
-            string query = "SELECT * FROM MENSAJES WHERE ID_CATEGORIA =" + id;
+            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= MENSAJES.ID_MENSAJE) as REACCIONES_COUNT from MENSAJES where ID_CATEGORIA = {0}", id);
 
 
 
@@ -164,28 +164,6 @@ namespace ProyectoBlog.Modelos
             return list;
         }
 
-
-        public List<Mensaje> GetMensajes(int catID)
-        {
-            string query = "SELECT * FROM MENSAJES WHERE ID_CATEGORIA ="+catID;
-
-            List<Mensaje> list = new List<Mensaje>();
-
-            if (this.OpenConnection() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    list.Add(new Mensaje(dataReader));
-                }
-                dataReader.Close();
-                this.CloseConnection();
-            }
-                return list;
-
-        }
         public List<Categoria> GetCatalogoCategorias()
         {
             string query = "SELECT * FROM CAT_CATEGORIA WHERE IS_ACTIVE = TRUE ORDER BY 1";
@@ -214,7 +192,7 @@ namespace ProyectoBlog.Modelos
         public Mensaje GetMensaje(int id)
         {
             Mensaje mensaje = null;
-            string query = "SELECT * FROM MENSAJES WHERE ID_MENSAJE = " + id;
+            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= {0}) as REACCIONES_COUNT from MENSAJES where id_mensaje = {0}", id);
 
 
             if (this.OpenConnection() == true)
@@ -230,24 +208,6 @@ namespace ProyectoBlog.Modelos
             }
             return mensaje;
         }
-        public DataTable TablaContacto(DataTable allUsuarios, DataSet listaUsuarios)
-        {
-            string query = "SELECT * FROM USUARIOS;";
-            MySqlDataAdapter u = new MySqlDataAdapter(query, connection);
-            u.Fill(listaUsuarios, "USUARIOS");
-            allUsuarios = listaUsuarios.Tables["USUARIOS"];
-            return allUsuarios;
-        }
-
-        public void SetUsuario(string nickName, string password, string name, string lastName)
-        {
-            connection.Open();
-            string query = "INSERT INTO USUARIOS VALUES ('" + nickName + "', '" + password + "', '" + name + "', '" + lastName + "', 'usuario', 'null', '1');";
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            this.CloseConnection();
-        }
-
         public Usuario GetUsuarioByNameAndPassword(string name, string password)
         {
             string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + name + "' AND CONTRASENA = '" + password + "' ;";

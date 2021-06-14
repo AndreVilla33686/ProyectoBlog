@@ -15,7 +15,7 @@ namespace ProyectoBlog.Modelos
         public DateTime Fecha { get; set; }
         public string Categoria { get; set; }
         public Usuario Autor { get; set; }
-
+        public int Reacciones { set; get; }
         public Mensaje()
         {
 
@@ -32,10 +32,16 @@ namespace ProyectoBlog.Modelos
             //Contenido = SplitInParts(Contenido, 3);
             // Fecha = dataRow.GetDateTime("FECHA");
             Categoria = dataRow.GetString("ID_CATEGORIA");
+            Reacciones = dataRow.GetInt32("REACCIONES_COUNT");
             Database db = new Database();
              Autor = db.GetUsuarioByID(dataRow.GetInt32("AUTOR"));
         }
 
-        
+        internal void AddLike(Usuario loggedUser)
+        {
+            Database db = new Database();
+            string sql = String.Format("CALL Add_Like ({0},{1})", Id, loggedUser.Id);
+            db.ExcecuteSql(sql, new List<string[]>());
+        }
     }
 }

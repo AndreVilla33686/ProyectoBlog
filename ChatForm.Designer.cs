@@ -35,6 +35,7 @@ namespace ProyectoBlog
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.adminBox = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@ namespace ProyectoBlog
             this.label2 = new System.Windows.Forms.Label();
             this.lvUsuarios = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.adminBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,13 +61,16 @@ namespace ProyectoBlog
             // 
             // lvConversacion
             // 
+            this.lvConversacion.FullRowSelect = true;
             this.lvConversacion.HideSelection = false;
             this.lvConversacion.Location = new System.Drawing.Point(171, 23);
+            this.lvConversacion.MultiSelect = false;
             this.lvConversacion.Name = "lvConversacion";
             this.lvConversacion.Size = new System.Drawing.Size(394, 356);
             this.lvConversacion.TabIndex = 1;
             this.lvConversacion.UseCompatibleStateImageBehavior = false;
             this.lvConversacion.View = System.Windows.Forms.View.List;
+            this.lvConversacion.DoubleClick += new System.EventHandler(this.lvConversacion_DoubleClick);
             // 
             // btnSendMessage
             // 
@@ -112,6 +115,16 @@ namespace ProyectoBlog
             this.adminBox.TabIndex = 5;
             this.adminBox.TabStop = false;
             this.adminBox.Text = "ACCIONES DE ADMINISTRADOR";
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(335, 19);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(93, 49);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Cambiar Tipo de Cuenta";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -190,16 +203,6 @@ namespace ProyectoBlog
             this.label3.Size = new System.Drawing.Size(122, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = ">> CONVERSACION <<";
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(335, 19);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(93, 49);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "Cambiar Tipo de Cuenta";
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // ChatForm
             // 
