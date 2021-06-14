@@ -34,7 +34,7 @@ namespace ProyectoBlog
             this.btnSendMessage = new System.Windows.Forms.Button();
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.adminBox = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -43,7 +43,8 @@ namespace ProyectoBlog
             this.label2 = new System.Windows.Forms.Label();
             this.lvUsuarios = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.button6 = new System.Windows.Forms.Button();
+            this.adminBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvCategorias
@@ -97,19 +98,20 @@ namespace ProyectoBlog
             this.label1.TabIndex = 4;
             this.label1.Text = ">> CATEGORIAS <<";
             // 
-            // groupBox1
+            // adminBox
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(82, 420);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(549, 74);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "ACCIONES DE ADMINISTRADOR";
+            this.adminBox.Controls.Add(this.button6);
+            this.adminBox.Controls.Add(this.button5);
+            this.adminBox.Controls.Add(this.button4);
+            this.adminBox.Controls.Add(this.button3);
+            this.adminBox.Controls.Add(this.button2);
+            this.adminBox.Controls.Add(this.button1);
+            this.adminBox.Location = new System.Drawing.Point(16, 420);
+            this.adminBox.Name = "adminBox";
+            this.adminBox.Size = new System.Drawing.Size(662, 74);
+            this.adminBox.TabIndex = 5;
+            this.adminBox.TabStop = false;
+            this.adminBox.Text = "ACCIONES DE ADMINISTRADOR";
             // 
             // button5
             // 
@@ -124,7 +126,7 @@ namespace ProyectoBlog
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(442, 19);
+            this.button4.Location = new System.Drawing.Point(552, 19);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(93, 49);
             this.button4.TabIndex = 12;
@@ -134,7 +136,7 @@ namespace ProyectoBlog
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(333, 19);
+            this.button3.Location = new System.Drawing.Point(443, 19);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 49);
             this.button3.TabIndex = 11;
@@ -164,7 +166,7 @@ namespace ProyectoBlog
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(596, 7);
+            this.label2.Location = new System.Drawing.Point(641, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 13);
             this.label2.TabIndex = 7;
@@ -175,7 +177,7 @@ namespace ProyectoBlog
             this.lvUsuarios.HideSelection = false;
             this.lvUsuarios.Location = new System.Drawing.Point(571, 23);
             this.lvUsuarios.Name = "lvUsuarios";
-            this.lvUsuarios.Size = new System.Drawing.Size(150, 388);
+            this.lvUsuarios.Size = new System.Drawing.Size(230, 388);
             this.lvUsuarios.TabIndex = 6;
             this.lvUsuarios.UseCompatibleStateImageBehavior = false;
             this.lvUsuarios.View = System.Windows.Forms.View.List;
@@ -189,24 +191,37 @@ namespace ProyectoBlog
             this.label3.TabIndex = 8;
             this.label3.Text = ">> CONVERSACION <<";
             // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(335, 19);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(93, 49);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Cambiar Tipo de Cuenta";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 509);
+            this.ClientSize = new System.Drawing.Size(814, 531);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lvUsuarios);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.adminBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.lvConversacion);
             this.Controls.Add(this.lvCategorias);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChatForm";
             this.Text = "Cetys Chat";
             this.Load += new System.EventHandler(this.ChatForm_Load);
-            this.groupBox1.ResumeLayout(false);
+            this.adminBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,7 +234,7 @@ namespace ProyectoBlog
         private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox adminBox;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -228,5 +243,6 @@ namespace ProyectoBlog
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView lvUsuarios;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button6;
     }
 }

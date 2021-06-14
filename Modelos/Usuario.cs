@@ -17,7 +17,7 @@ namespace ProyectoBlog.Modelos
         public string LastName { set; get; }
         public string Tipo { set; get; }
         public int Id { set; get; }
-        public int Activo { set; get; }
+        public bool Activo { set; get; }
 
         public Usuario(MySqlDataReader dataReader)
         {
@@ -27,7 +27,7 @@ namespace ProyectoBlog.Modelos
             LastName = dataReader.GetString("APELLIDO");
             Tipo = dataReader.GetString("TIPO");
             Id = dataReader.GetInt32("ID_USUARIO");
-            Activo = dataReader.GetInt32("IS_ACTIVE");
+            Activo = dataReader.GetInt32("IS_ACTIVE")==1;
         }
         public Usuario() { }
  
