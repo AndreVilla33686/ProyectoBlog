@@ -65,9 +65,10 @@ namespace ProyectoBlog.Modelos
         internal void CreateNewUser(Usuario nuevousuario)
         {
             connection.Open();
-            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.Nickname + "', '" + nuevousuario.Password + "', '" + nuevousuario.Name + "', '" + nuevousuario.LastName + "', 'usuario', 'null', 'null');";
+            string query = "INSERT INTO USUARIOS VALUES ('" + nuevousuario.Nickname + "', '" + nuevousuario.Password + "', '" + nuevousuario.Name + "', '" + nuevousuario.LastName + "', 'usuario', 'null', '1');";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
+            this.CloseConnection();
             //throw new NotImplementedException();
         }
 
@@ -244,6 +245,7 @@ namespace ProyectoBlog.Modelos
             string query = "INSERT INTO USUARIOS VALUES ('" + nickName + "', '" + password + "', '" + name + "', '" + lastName + "', 'usuario', 'null', '1');";
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.ExecuteNonQuery();
+            this.CloseConnection();
         }
 
         public Usuario GetUsuarioByNameAndPassword(string name, string password)

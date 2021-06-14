@@ -29,8 +29,6 @@ namespace ProyectoBlog
         /// </summary>
         private void InitializeComponent()
         {
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -40,33 +38,12 @@ namespace ProyectoBlog
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(326, 206);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(113, 13);
-            this.linkLabel2.TabIndex = 17;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Recuperar contraseña";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(188, 206);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "¿Olvidaste tu Contraseña?";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 135);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(248, 166);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 20);
+            this.button1.Size = new System.Drawing.Size(128, 25);
             this.button1.TabIndex = 15;
             this.button1.Text = "Iniciar Sesión";
             this.button1.UseVisualStyleBackColor = true;
@@ -75,20 +52,18 @@ namespace ProyectoBlog
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(188, 176);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(251, 217);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.Size = new System.Drawing.Size(131, 17);
             this.label3.TabIndex = 14;
             this.label3.Text = "¿No tienes cuenta?";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(291, 176);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(388, 217);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(68, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(90, 17);
             this.linkLabel1.TabIndex = 13;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Crear cuenta";
@@ -96,50 +71,46 @@ namespace ProyectoBlog
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(186, 98);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.passwordBox.Location = new System.Drawing.Point(248, 121);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '*';
-            this.passwordBox.Size = new System.Drawing.Size(230, 20);
+            this.passwordBox.Size = new System.Drawing.Size(305, 22);
             this.passwordBox.TabIndex = 12;
             this.passwordBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 80);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(248, 98);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(81, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Contraseña";
             // 
             // nickNameBox
             // 
-            this.nickNameBox.Location = new System.Drawing.Point(186, 34);
-            this.nickNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nickNameBox.Location = new System.Drawing.Point(248, 42);
+            this.nickNameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nickNameBox.Name = "nickNameBox";
-            this.nickNameBox.Size = new System.Drawing.Size(230, 20);
+            this.nickNameBox.Size = new System.Drawing.Size(305, 22);
             this.nickNameBox.TabIndex = 10;
             this.nickNameBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(184, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(245, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.Size = new System.Drawing.Size(131, 17);
             this.label1.TabIndex = 9;
             this.label1.Text = "Nombre de Usuario";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 244);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.label4);
+            this.ClientSize = new System.Drawing.Size(800, 258);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkLabel1);
@@ -147,7 +118,7 @@ namespace ProyectoBlog
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nickNameBox);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -157,9 +128,6 @@ namespace ProyectoBlog
         }
 
         #endregion
-
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
