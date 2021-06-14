@@ -188,7 +188,7 @@ namespace ProyectoBlog.Modelos
         }
         public List<Categoria> GetCatalogoCategorias()
         {
-            string query = "SELECT * FROM CAT_CATEGORIA ORDER BY 1";
+            string query = "SELECT * FROM CAT_CATEGORIA WHERE IS_ACTIVE = TRUE ORDER BY 1";
 
             List<Categoria> list = new List<Categoria>();
 

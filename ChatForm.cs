@@ -23,11 +23,39 @@ namespace ProyectoBlog
         {
             _loggedUser = user;
             InitializeComponent();
+            userPermissions();
             SetWindowTheme(lvCategorias.Handle, "Explorer", null);
             dbConnection = new Database();
             LoadCategorias();
             InitTimer();
 
+        }
+        private void userPermissions()
+        {
+            if (_loggedUser.Tipo == "admin")
+            {
+                this.Size = new Size(830, 550);
+                adminBox.Enabled = true;
+            }
+            else
+            {
+                this.Size = new Size(830, 460);
+                adminBox.Enabled = false;
+            }
+            txtMessage.Text = "";
+            txtMessage.Enabled = true;
+            btnSendMessage.Enabled = true;
+            if (!_loggedUser.Activo)
+            {
+                txtMessage.Text = "USUARIO BLOQUEADO";
+                txtMessage.Enabled = false;
+                btnSendMessage.Enabled = false;
+            }
+        }
+        private void checkUser()
+        {
+            _loggedUser = dbConnection.GetUsuarioByID(_loggedUser.Id);
+            userPermissions();
         }
         private Timer timer1;
         public void InitTimer()
@@ -41,10 +69,13 @@ namespace ProyectoBlog
         private void timer1_Tick(object sender, EventArgs e)
         {
             LoadMensajes();
+            LoadCategorias();
+            checkUser();
         }
         private void LoadCategorias()
         {
             _categorias = dbConnection.GetCatalogoCategorias();
+            if (lvCategorias.Items.Count == _categorias.Count) return;
             lvCategorias.Clear();
             _categorias.ForEach((cat) =>
             {
@@ -68,10 +99,20 @@ namespace ProyectoBlog
             if(_conversacion ==null) return;
             if (_conversacion.Mensajes.Count == lvConversacion.Items.Count) return;
             lvConversacion.Clear();
+            lvUsuarios.Clear();
             if (_conversacion == null) return;
             _conversacion.Mensajes.ForEach((mensaje) =>
             {
                 lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido, mensaje.Id);
+                if(lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
+                {
+                    string isAdmin = "";
+                    if (mensaje.Autor.Tipo == "admin")
+                    {
+                        isAdmin = "\u2605 ";
+                    }
+                lvUsuarios.Items.Add(String.Format(isAdmin+"{0} {1} ({2})", mensaje.Autor.Name, mensaje.Autor.LastName, mensaje.Autor.Nickname),mensaje.Autor.Id);
+                }
             });
   
         }
