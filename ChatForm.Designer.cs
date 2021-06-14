@@ -56,6 +56,7 @@ namespace ProyectoBlog
             this.lvCategorias.TabIndex = 0;
             this.lvCategorias.UseCompatibleStateImageBehavior = false;
             this.lvCategorias.View = System.Windows.Forms.View.List;
+            this.lvCategorias.SelectedIndexChanged += new System.EventHandler(this.lvCategorias_SelectedIndexChanged);
             // 
             // lvConversacion
             // 
@@ -65,6 +66,7 @@ namespace ProyectoBlog
             this.lvConversacion.Size = new System.Drawing.Size(394, 356);
             this.lvConversacion.TabIndex = 1;
             this.lvConversacion.UseCompatibleStateImageBehavior = false;
+            this.lvConversacion.View = System.Windows.Forms.View.List;
             // 
             // btnSendMessage
             // 

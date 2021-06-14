@@ -12,7 +12,7 @@ namespace ProyectoBlog.Modelos
     {
         public int Id { get; set; }
         public string Contenido { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public string Categoria { get; set; }
         public Usuario Autor { get; set; }
 
@@ -29,7 +29,7 @@ namespace ProyectoBlog.Modelos
         {
             Id = dataRow.GetInt32("ID_MENSAJE");
             Contenido = dataRow.GetString("CONTENIDO");
-            Fecha = dataRow.GetString("FECHA");
+           // Fecha = dataRow.GetDateTime("FECHA");
             Categoria = dataRow.GetString("ID_CATEGORIA");
             // Autor = (int)dataRow["AUTOR"];
         }

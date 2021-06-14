@@ -19,6 +19,7 @@ namespace ProyectoBlog
 
         private List<Categoria> _categorias = new List<Categoria>();
         private Usuario _loggedUser;
+        private Conversacion _conversacion ;
         Database dbConnection;
         public ChatForm(Usuario user)
         {
@@ -44,6 +45,17 @@ namespace ProyectoBlog
         }
         private void LoadMensajes()
         {
+            if (lvCategorias.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            _conversacion = dbConnection.GetConversacionByCategoriaID(lvCategorias.SelectedItems[0].ImageIndex.ToString());
+            lvConversacion.Clear();
+            if (_conversacion == null) return;
+            _conversacion.Mensajes.ForEach((mensaje) =>
+            {
+                lvConversacion.Items.Add(mensaje.Contenido, mensaje.Id);
+            });
 
         }
 
@@ -75,6 +87,13 @@ namespace ProyectoBlog
             mensaje.Categoria = lvCategorias.SelectedItems[0].ImageIndex.ToString();
             mensaje.Contenido = txtMessage.Text.Trim();
             db.AddNewMessage(mensaje);
+            txtMessage.Text = "";
+            LoadMensajes();
+        }
+
+        private void lvCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadMensajes();
         }
     }
 }

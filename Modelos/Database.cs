@@ -39,6 +39,10 @@ namespace ProyectoBlog.Modelos
         {
             try
             {
+                if(connection.State == ConnectionState.Open)
+                {
+                    return true;
+                }
                 connection.Open();
                 return true;
             }
@@ -122,7 +126,7 @@ namespace ProyectoBlog.Modelos
             }
         }
 
-        public Conversacion GetConversacionByCategoriaID(int id)
+        public Conversacion GetConversacionByCategoriaID(string id)
         {
             Conversacion conv = null;
             string query = "SELECT * FROM MENSAJES WHERE ID_CATEGORIA =" + id;
@@ -133,13 +137,17 @@ namespace ProyectoBlog.Modelos
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
+                if (dataReader.HasRows)
+                {
 
+                conv = new Conversacion();
+                conv.ID = Int32.Parse(id);
                 while (dataReader.Read())
                 {
-                    conv = new Conversacion();
-                    conv.ID = id;
-                    conv.Mensajes = GetMensajes(conv.ID);
-                    conv.Participantes = GetParticipantes(conv.ID);
+                    
+                    conv.Mensajes.Add(new Mensaje(dataReader));
+                  
+                }
                 }
                 dataReader.Close();
                 this.CloseConnection();
@@ -150,9 +158,11 @@ namespace ProyectoBlog.Modelos
 
         private List<Usuario> GetParticipantes(int iD)
         {
+            List<Usuario> list = new List<Usuario>();
             string query = "SELECT * FROM MENSAJES WHERE ID_CATEGORIA =" + iD;
-            throw new NotImplementedException();
+            return list;
         }
+
 
         public List<Mensaje> GetMensajes(int catID)
         {

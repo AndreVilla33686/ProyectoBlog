@@ -15,7 +15,8 @@ namespace ProyectoBlog.Modelos
         public List<Usuario> Participantes { get; set; }
         public Conversacion()
         {
-
+            Mensajes = new List<Mensaje>();
+            Participantes = new List<Usuario>();
         }
 
         public Conversacion(MySqlDataReader dataReader)

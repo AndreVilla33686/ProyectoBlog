@@ -25,3 +25,4 @@ C:\Users\Enrique Fernandez\Source\Repos\ProyectoBlog\obj\Debug\ProyectoBlog.cspr
 C:\Users\Enrique Fernandez\Source\Repos\ProyectoBlog\obj\Debug\ProyectoBlog.csproj.CopyComplete
 C:\Users\Enrique Fernandez\Source\Repos\ProyectoBlog\obj\Debug\ProyectoBlog.exe
 C:\Users\Enrique Fernandez\Source\Repos\ProyectoBlog\obj\Debug\ProyectoBlog.pdb
+C:\Users\Enrique Fernandez\Source\Repos\ProyectoBlog\obj\Debug\ProyectoBlog.csproj.AssemblyReference.cache
