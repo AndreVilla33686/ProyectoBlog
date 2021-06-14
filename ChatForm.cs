@@ -9,14 +9,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace ProyectoBlog
 {
     public partial class ChatForm : Form
     {
         [DllImport("uxtheme.dll", CharSet = CharSet.Unicode)]
         public static extern int SetWindowTheme(IntPtr hWnd, String pszSubAppName, String pszSubIdList);
-
         private List<Categoria> _categorias = new List<Categoria>();
         private Usuario _loggedUser;
         private Conversacion _conversacion ;
@@ -28,6 +26,21 @@ namespace ProyectoBlog
             SetWindowTheme(lvCategorias.Handle, "Explorer", null);
             dbConnection = new Database();
             LoadCategorias();
+            InitTimer();
+
+        }
+        private Timer timer1;
+        public void InitTimer()
+        {
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 2000; // in miliseconds
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            LoadMensajes();
         }
         private void LoadCategorias()
         {
@@ -42,22 +55,27 @@ namespace ProyectoBlog
                 lvCategorias.Items[0].Selected = true;
                 lvCategorias.Select();
             }
+
         }
         private void LoadMensajes()
         {
+
             if (lvCategorias.SelectedItems.Count == 0)
             {
                 return;
             }
             _conversacion = dbConnection.GetConversacionByCategoriaID(lvCategorias.SelectedItems[0].ImageIndex.ToString());
+            if(_conversacion ==null) return;
+            if (_conversacion.Mensajes.Count == lvConversacion.Items.Count) return;
             lvConversacion.Clear();
             if (_conversacion == null) return;
             _conversacion.Mensajes.ForEach((mensaje) =>
             {
-                lvConversacion.Items.Add(mensaje.Contenido, mensaje.Id);
+                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido, mensaje.Id);
             });
-
+  
         }
+
 
         private void ChatForm_Load(object sender, EventArgs e)
         {
