@@ -32,7 +32,8 @@ namespace ProyectoBlog.Modelos
             //Contenido = SplitInParts(Contenido, 3);
             // Fecha = dataRow.GetDateTime("FECHA");
             Categoria = dataRow.GetString("ID_CATEGORIA");
-            // Autor = (int)dataRow["AUTOR"];
+            Database db = new Database();
+             Autor = db.GetUsuarioByID(dataRow.GetInt32("AUTOR"));
         }
 
         
