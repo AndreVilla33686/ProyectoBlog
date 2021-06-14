@@ -44,12 +44,21 @@ namespace ProyectoBlog
         private void button1_Click_1(object sender, EventArgs e)
         {
             Database db = new Database();
-            Usuario loggedUser = db.GetUsuarioByNameAndPassword(nickNameBox.Text, passwordBox.Text);
+            Object loggedUser = db.GetUsuarioByNameAndPassword(nickNameBox.Text, passwordBox.Text);
             if(loggedUser == null){
                 MessageBox.Show("El Usuario no existe o la contrasena es incorrecta.");
                 return;
             }
-            ChatForm chat = new ChatForm(loggedUser);
+            ChatForm chat;
+            if (typeof(Usuario).IsInstanceOfType(loggedUser))
+            {
+
+              chat = new ChatForm((Usuario)loggedUser);
+            }
+            else
+            {
+                 chat = new ChatForm((AdminUser)loggedUser);
+            }
            this.Hide();
             chat.Show();
         }

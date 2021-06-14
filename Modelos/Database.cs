@@ -130,7 +130,7 @@ namespace ProyectoBlog.Modelos
         public Conversacion GetConversacionByCategoriaID(string id)
         {
             Conversacion conv = null;
-            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= MENSAJES.ID_MENSAJE) as REACCIONES_COUNT from MENSAJES where ID_CATEGORIA = {0}", id);
+            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= MENSAJES.ID_MENSAJE) as REACCIONES_COUNT from MENSAJES where ID_CATEGORIA = {0} AND VISIBLE = TRUE", id);
 
 
 
@@ -192,7 +192,7 @@ namespace ProyectoBlog.Modelos
         public Mensaje GetMensaje(int id)
         {
             Mensaje mensaje = null;
-            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= {0}) as REACCIONES_COUNT from MENSAJES where id_mensaje = {0}", id);
+            string query = String.Format("SELECT *, (SELECT COUNT(*) from REACCIONES WHERE ID_MENSAJE= {0}) as REACCIONES_COUNT from MENSAJES where id_mensaje = {0}  AND VISIBLE = TRUE", id);
 
 
             if (this.OpenConnection() == true)

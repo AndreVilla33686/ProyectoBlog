@@ -104,9 +104,9 @@ namespace ProyectoBlog
                 string likes = "";
                 if (mensaje.Reacciones > 0)
                 {
-                    likes= "\u2665"+mensaje.Reacciones +" ";
+                    likes= "   \u2665"+mensaje.Reacciones +" ";
                 }
-                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > "+likes + mensaje.Contenido , mensaje.Id);
+                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido + likes, mensaje.Id);
                 
                 if(lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
                 {
@@ -167,6 +167,11 @@ namespace ProyectoBlog
                 msj.AddLike(_loggedUser);
                 LoadMensajes();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
