@@ -42,9 +42,7 @@ namespace ProyectoBlog
                 this.Size = new Size(830, 460);
                 adminBox.Enabled = false;
             }
-            txtMessage.Text = "";
-            txtMessage.Enabled = true;
-            btnSendMessage.Enabled = true;
+
             if (!_loggedUser.Activo)
             {
                 txtMessage.Text = "USUARIO BLOQUEADO";
@@ -93,17 +91,22 @@ namespace ProyectoBlog
 
             if (lvCategorias.SelectedItems.Count == 0)
             {
-             //   return;
+                return;
             }
             _conversacion = dbConnection.GetConversacionByCategoriaID(lvCategorias.SelectedItems[0].ImageIndex.ToString());
             if(_conversacion ==null) return;
-            if (_conversacion.Mensajes.Count == lvConversacion.Items.Count) return;
+            //if (_conversacion.Mensajes.Count == lvConversacion.Items.Count) return;
             lvConversacion.Clear();
             lvUsuarios.Clear();
             if (_conversacion == null) return;
             _conversacion.Mensajes.ForEach((mensaje) =>
             {
-                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > \u2665"+mensaje.Reacciones +" " + mensaje.Contenido , mensaje.Id);
+                string likes = "";
+                if (mensaje.Reacciones > 0)
+                {
+                    likes= "\u2665"+mensaje.Reacciones +" ";
+                }
+                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > "+likes + mensaje.Contenido , mensaje.Id);
                 
                 if(lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
                 {
