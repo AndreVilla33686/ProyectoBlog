@@ -35,7 +35,5 @@ namespace ProyectoBlog.Modelos
             Database db = new Database();
              Autor = db.GetUsuarioByID(dataRow.GetInt32("AUTOR"));
         }
-
-        
     }
 }
