@@ -50,14 +50,14 @@ namespace ProyectoBlog
                 return;
             }
             ChatForm chat;
-            if (typeof(Usuario).IsInstanceOfType(loggedUser))
+            if (typeof(AdminUser).IsInstanceOfType(loggedUser))
             {
 
-              chat = new ChatForm((Usuario)loggedUser);
+                 chat = new ChatForm((AdminUser)loggedUser);
             }
             else
             {
-                 chat = new ChatForm((AdminUser)loggedUser);
+              chat = new ChatForm((Usuario)loggedUser);
             }
            this.Hide();
             chat.Show();

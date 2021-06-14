@@ -17,23 +17,39 @@ namespace ProyectoBlog
         public static extern int SetWindowTheme(IntPtr hWnd, String pszSubAppName, String pszSubIdList);
         private List<Categoria> _categorias = new List<Categoria>();
         private Usuario _loggedUser;
-        private Conversacion _conversacion ;
+        private AdminUser _loggedAdmin;
+        private Conversacion _conversacion;
         Database dbConnection;
         public ChatForm(Usuario user)
         {
+
             _loggedUser = user;
+
+            init();
+
+        }
+        private void init()
+        {
             InitializeComponent();
             userPermissions();
             SetWindowTheme(lvCategorias.Handle, "Explorer", null);
             dbConnection = new Database();
             LoadCategorias();
             InitTimer();
+        }
+        public ChatForm(AdminUser user)
+        {
+            _loggedUser = user;
+            _loggedAdmin = user;
+
+            init();
 
         }
         private void userPermissions()
         {
             if (_loggedUser.Tipo == "admin")
             {
+
                 this.Size = new Size(830, 550);
                 adminBox.Enabled = true;
             }
@@ -94,7 +110,13 @@ namespace ProyectoBlog
                 return;
             }
             _conversacion = dbConnection.GetConversacionByCategoriaID(lvCategorias.SelectedItems[0].ImageIndex.ToString());
-            if(_conversacion ==null) return;
+            if (_conversacion == null) return;
+            int selectedItem=-1;
+            if (lvConversacion.SelectedItems.Count > 0)
+            {
+
+             selectedItem = lvConversacion.SelectedItems[0].ImageIndex;
+            }
             //if (_conversacion.Mensajes.Count == lvConversacion.Items.Count) return;
             lvConversacion.Clear();
             lvUsuarios.Clear();
@@ -104,21 +126,24 @@ namespace ProyectoBlog
                 string likes = "";
                 if (mensaje.Reacciones > 0)
                 {
-                    likes= "   \u2665"+mensaje.Reacciones +" ";
+                    likes = "   \u2665" + mensaje.Reacciones + " ";
                 }
-                lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido + likes, mensaje.Id);
-                
-                if(lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
+               ListViewItem item = lvConversacion.Items.Add(mensaje.Autor.Nickname + " > " + mensaje.Contenido + likes, mensaje.Id);
+                if(item.ImageIndex == selectedItem)
+                {
+                    item.Selected = true;
+                }
+                if (lvUsuarios.Items.Cast<ListViewItem>().ToList().Where(x => x.ImageIndex == mensaje.Autor.Id).Count() == 0)
                 {
                     string isAdmin = "";
                     if (mensaje.Autor.Tipo == "admin")
                     {
                         isAdmin = "\u2605 ";
                     }
-                lvUsuarios.Items.Add(String.Format(isAdmin+"{0} {1} ({2})", mensaje.Autor.Name, mensaje.Autor.LastName, mensaje.Autor.Nickname),mensaje.Autor.Id);
+                    lvUsuarios.Items.Add(String.Format(isAdmin + "{0} {1} ({2})", mensaje.Autor.Name, mensaje.Autor.LastName, mensaje.Autor.Nickname), mensaje.Autor.Id);
                 }
             });
-  
+
         }
 
 
@@ -134,12 +159,12 @@ namespace ProyectoBlog
 
         private void btnSendMessage_Click(object sender, EventArgs e)
         {
-            if(txtMessage.Text.Trim().Length == 0 )
+            if (txtMessage.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Por favor ingresa un mensaje.");
                 return;
             }
-            if( lvCategorias.SelectedItems.Count == 0)
+            if (lvCategorias.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Por favor selecciona una categoria.");
                 return;
@@ -156,12 +181,14 @@ namespace ProyectoBlog
 
         private void lvCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lvConversacion.Clear();
+            lvUsuarios.Clear();
             LoadMensajes();
         }
 
         private void lvConversacion_DoubleClick(object sender, EventArgs e)
         {
-            if(lvConversacion.SelectedItems.Count > 0)
+            if (lvConversacion.SelectedItems.Count > 0)
             {
                 Mensaje msj = dbConnection.GetMensaje(lvConversacion.SelectedItems[0].ImageIndex);
                 msj.AddLike(_loggedUser);
@@ -171,7 +198,11 @@ namespace ProyectoBlog
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (lvConversacion.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.BorrarMensaje(lvConversacion.SelectedItems[0].ImageIndex);
+                LoadMensajes();
+            }
         }
     }
 }

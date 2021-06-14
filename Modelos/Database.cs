@@ -208,11 +208,11 @@ namespace ProyectoBlog.Modelos
             }
             return mensaje;
         }
-        public Usuario GetUsuarioByNameAndPassword(string name, string password)
+        public object GetUsuarioByNameAndPassword(string name, string password)
         {
             string query = "SELECT * FROM USUARIOS WHERE NICKNAME = '" + name + "' AND CONTRASENA = '" + password + "' ;";
 
-            Usuario activeUser =null;
+            Object activeUser =null;
 
             if (this.OpenConnection() == true)
             {
@@ -220,7 +220,15 @@ namespace ProyectoBlog.Modelos
                 MySqlDataReader dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
+                    if (dataReader.GetString("tipo") == "admin")
+                    {
+
+                        activeUser = new AdminUser(dataReader);
+                    }
+                    else
+                    {
                     activeUser = new Usuario(dataReader);
+                    }
                 }
 
                 dataReader.Close();

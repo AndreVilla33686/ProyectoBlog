@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoBlog.Modelos
 {
-    class AdminUser: Usuario
+   public  class AdminUser: Usuario
     {
         public AdminUser(MySqlDataReader dataReader)
         {
