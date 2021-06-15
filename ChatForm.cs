@@ -149,7 +149,13 @@ namespace ProyectoBlog
 
         private void ChatForm_Load(object sender, EventArgs e)
         {
+                label4.Text = _loggedUser.Nickname;
+                
+        }
 
+        private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Byeee");
         }
 
         private void txtMessage_TextChanged(object sender, EventArgs e)
@@ -203,6 +209,69 @@ namespace ProyectoBlog
                 _loggedAdmin.BorrarMensaje(lvConversacion.SelectedItems[0].ImageIndex);
                 LoadMensajes();
             }
+        }
+
+        private void Salir_Click(object sender, EventArgs e)
+        {
+            this.timer1.Stop();
+            this.Close();
+            Login l = new Login();
+            l.Visible = true;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (lvUsuarios.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.SwithcAccountType(lvUsuarios.SelectedItems[0].ImageIndex);
+                //LoadMensajes();
+            }
+            InitTimer();
+        }
+
+        private void lvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (lvUsuarios.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.BloquearUsuario(lvUsuarios.SelectedItems[0].ImageIndex);
+                //LoadMensajes();
+            }
+            InitTimer();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (lvUsuarios.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.ReactivarUsuario(lvUsuarios.SelectedItems[0].ImageIndex);
+                //LoadMensajes();
+            }
+            InitTimer();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (lvCategorias.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.AddCategoria(txtMessage.Text);
+                txtMessage.Text = "";
+                //LoadMensajes();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (lvCategorias.SelectedItems.Count > 0)
+            {
+                _loggedAdmin.DeleteCategoria(lvCategorias.SelectedItems[0].ImageIndex);
+                //LoadMensajes();
+            }
+            InitTimer();
         }
     }
 }

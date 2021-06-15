@@ -29,19 +29,43 @@ namespace ProyectoBlog.Modelos
         }
         public void BloquearUsuario(int userID)
         {
-
+            string sql = "UPDATE USUARIOS SET IS_ACTIVE = FALSE WHERE ID_USUARIO = @userID";
+            List<string[]> parameters = new List<string[]>();
+            parameters.Add(new string[] { "userID", userID.ToString() });
+            Database db = new Database();
+            db.ExcecuteSql(sql, parameters);
         }
         public void ReactivarUsuario(int userID)
         {
-
+            string sql = "UPDATE USUARIOS SET IS_ACTIVE = TRUE WHERE ID_USUARIO = @userID";
+            List<string[]> parameters = new List<string[]>();
+            parameters.Add(new string[] { "userID", userID.ToString() });
+            Database db = new Database();
+            db.ExcecuteSql(sql, parameters);
         }
         public  void SwithcAccountType(int userID)
         {
-
+            string sql = "UPDATE USUARIOS SET TIPO = (CASE WHEN TIPO = 'admin' THEN 'usuario' ELSE 'admin' END) WHERE ID_USUARIO = @userID";
+            List<string[]> parameters = new List<string[]>();
+            parameters.Add(new string[] { "userID", userID.ToString() });
+            Database db = new Database();
+            db.ExcecuteSql(sql, parameters);
         }
-        public void AddCategoria(string cat) {
+        public void AddCategoria(string cat) 
+        {
+            string sql = "INSERT INTO CAT_CATEGORIA VALUES (@cat, null, 1)";
+            List<string[]> parameters = new List<string[]>();
+            parameters.Add(new string[] { "cat", cat });
+            Database db = new Database();
+            db.ExcecuteSql(sql, parameters);
         }
-        public void DeleteCategoria(int catID) { 
+        public void DeleteCategoria(int catID) 
+        {
+            string sql = "UPDATE CAT_CATEGORIA SET IS_ACTIVE = FALSE WHERE ID_CATEGORIA = @catID";
+            List<string[]> parameters = new List<string[]>();
+            parameters.Add(new string[] { "catID", catID.ToString() });
+            Database db = new Database();
+            db.ExcecuteSql(sql, parameters);
         }
     }
 }
